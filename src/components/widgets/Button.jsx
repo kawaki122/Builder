@@ -1,37 +1,43 @@
 import React, { Component } from "react";
 import Global from "../Global";
+import { Rnd } from "react-rnd";
+
+const style = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center"
+};
 class Button extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      x: props.coords.x,
-      y: props.coords.y
+      width: 85,
+      height: 45,
+      x: 10,
+      y: 10
     };
   }
-  drag = event => {
-    Global.fresh = false;
-  };
-  drop = event => {
-    let { clientX, clientY } = event;
-    if (clientX < 455) clientX = 455;
-    if (clientY < 70) clientY = 70;
-    if (clientX > 680) clientX = 680;
-    if (clientY > 528) clientY = 528;
-    this.setState({ x: clientX - 455, y: clientY - 70 });
-  };
+
   componentWillMount() {}
   render() {
-    const { x, y } = this.state;
     return (
-      <div
-        className="btn btn-primary"
-        draggable
-        onDragStart={event => this.drag(event)}
-        onDragEnd={event => this.drop(event)}
-        style={{ marginLeft: x, marginTop: y, position: "absolute" }}
+      <Rnd
+        style={style}
+        size={{ width: this.state.width, height: this.state.height }}
+        position={{ x: this.state.x, y: this.state.y }}
+        onDragStop={(e, d) => {
+          this.setState({ x: d.x, y: d.y });
+        }}
+        onResize={(e, direction, ref, delta, position) => {
+          this.setState({
+            width: ref.style.width,
+            height: ref.style.height,
+            ...position
+          });
+        }}
       >
-        Button
-      </div>
+        <div className="btn widget-common">Button</div>
+      </Rnd>
     );
   }
 }

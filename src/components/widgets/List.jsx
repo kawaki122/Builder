@@ -4,9 +4,13 @@ class List extends Component {
   state = {};
   render() {
     return (
-      <ul>
-        <li>Hello</li>
-        <li>world</li>
+      <ul className="list-group">
+        <li className="list-group-item">List item</li>
+        <li className="list-group-item">List item</li>
+        <li className="list-group-item">List item</li>
+        <li className="list-group-item">List item</li>
+        <li className="list-group-item">List item</li>
+        <li className="list-group-item">List item</li>
       </ul>
     );
   }
