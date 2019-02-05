@@ -15,9 +15,23 @@
   height: 40vmin;
 }
 .Screen {
-  height: 500px;
-  width: 80%;
-  margin-top: 50px;
+  height: 400px;
+  width: 230px;
+  margin: 0 auto;
+  margin-top: 8%;
   border-radius: 25px;
   overflow: hidden;
+  zoom: 1;
+}
+.border {
+  border: solid 1px black;
+}
+.btn-zoom {
+  margin: 10px;
+  margin-top: 5px;
+  margin-left: 85%;
+}
+.center {
+  height: 550px;
+  overflow: scroll;
 }
