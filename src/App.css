@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+body {
+  background: "#eceff1";
+}
 .widget-common {
   position: absolute;
   top: 0;
@@ -34,4 +36,12 @@
 .center {
   height: 550px;
   overflow: scroll;
+}
+.centerBar {
+  height: 30px;
+  position: absolute;
+  z-index: -1;
+}
+.b {
+  border-radius: 50%;
 }

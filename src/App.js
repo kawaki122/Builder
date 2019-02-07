@@ -4,28 +4,53 @@ import "./App.css";
 import SideMenu from "./components/SideMenu";
 import HomeScreen from "./components/HomeScreen";
 import CenterBar from "./components/centerBar";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+
+import FabMenu from "./components/FabMenu";
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    padding: theme.spacing.unit * 3
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+    height: 500
+  },
+  margin: {
+    margin: theme.spacing.unit
+  }
+});
 
 class App extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <React.Fragment>
-        <main className="container-fluid">
-          <div className="row">
-            <div className="col-md-3">
-              <SideMenu />
-            </div>
-            <div className="col-md-6">
-              <CenterBar />
-              <div className="border center">
-                <HomeScreen />
-              </div>
-            </div>
-            <div className="col-md-3" />
-          </div>
-        </main>
+        <NavBar color="primary" />
+        <div className={classes.root}>
+          <Grid container spacing={8}>
+            <Grid item xs={2}>
+              <FabMenu />
+            </Grid>
+            <Grid item xs={8}>
+              <div />
+            </Grid>
+            <Grid item xs={2}>
+              <Paper className={classes.paper}>xs=3</Paper>
+            </Grid>
+          </Grid>
+        </div>
       </React.Fragment>
     );
   }
 }
-
-export default App;
+App.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+export default withStyles(styles)(App);
